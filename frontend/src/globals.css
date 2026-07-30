@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter";
+    --font-manrope: "Manrope";
+    --font-syne: "Syne";
+    --font-auth: "Manrope", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    --font-auth-display: "Syne", "Manrope", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+    --sidebar: 222 47% 9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-muted: 215 16% 62%;
+    --sidebar-accent: 217 33% 14%;
+    --success: 160 84% 39%;
+    --success-soft: 152 76% 94%;
+    --warning: 38 92% 50%;
+    --warning-soft: 48 96% 89%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --border: 217 33% 17%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  .auth-shell {
+    font-family: var(--font-auth);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+  }
+
+  .auth-shell input,
+  .auth-shell button,
+  .auth-shell textarea,
+  .auth-shell select,
+  .auth-shell label,
+  .auth-shell a {
+    font-family: inherit;
+  }
+
+  .auth-shell input {
+    color: #0f172a;
+  }
+
+  .auth-shell input::placeholder {
+    color: #64748b;
+    opacity: 1;
+  }
+
+  .auth-shell .font-display {
+    font-family: var(--font-auth-display);
+    letter-spacing: -0.03em;
+    color: #0b1220;
+  }
+
+  .auth-shell .auth-muted {
+    color: #475569;
+  }
+
+  .auth-shell .auth-label {
+    color: #1e293b;
+  }
+
+  .auth-shell .auth-link {
+    color: #1d4ed8;
+  }
+
+  .auth-shell .auth-link:hover {
+    color: #1e40af;
+  }
+
+  .auth-shell .auth-hero-title,
+  .auth-shell .auth-hero-brand {
+    color: #ffffff;
+  }
+
+  .auth-shell .auth-hero-copy {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .auth-shell .auth-footer {
+    color: #64748b;
+  }
+}
