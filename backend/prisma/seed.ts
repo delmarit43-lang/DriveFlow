@@ -293,13 +293,15 @@ const vehicles = [
 ];
 
 async function main() {
-  const password = await bcrypt.hash("Admin@123", 12);
+  const adminPassword = await bcrypt.hash("Admin@123", 12);
+  const managerPassword = await bcrypt.hash("Manager@123", 12);
+  const staffPassword = await bcrypt.hash("Staff@123", 12);
 
   await prisma.user.upsert({
     where: { email: "admin@driveflow.com" },
     update: {
       fullName: "DriveFlow Administrator",
-      password,
+      password: adminPassword,
       role: "SUPER_ADMIN",
       status: "ACTIVE",
       phone: "+252 63 000 0000",
@@ -308,11 +310,50 @@ async function main() {
       fullName: "DriveFlow Administrator",
       email: "admin@driveflow.com",
       phone: "+252 63 000 0000",
-      password,
+      password: adminPassword,
       role: "SUPER_ADMIN",
       status: "ACTIVE",
     },
   });
+
+  await prisma.user.upsert({
+    where: { email: "manager@driveflow.com" },
+    update: {
+      fullName: "Fleet Operations Manager",
+      password: managerPassword,
+      role: "ADMIN",
+      status: "ACTIVE",
+      phone: "+252 63 111 2222",
+    },
+    create: {
+      fullName: "Fleet Operations Manager",
+      email: "manager@driveflow.com",
+      phone: "+252 63 111 2222",
+      password: managerPassword,
+      role: "ADMIN",
+      status: "ACTIVE",
+    },
+  });
+
+  await prisma.user.upsert({
+    where: { email: "staff@driveflow.com" },
+    update: {
+      fullName: "DriveFlow Rental Staff",
+      password: staffPassword,
+      role: "STAFF",
+      status: "ACTIVE",
+      phone: "+252 63 333 4444",
+    },
+    create: {
+      fullName: "DriveFlow Rental Staff",
+      email: "staff@driveflow.com",
+      phone: "+252 63 333 4444",
+      password: staffPassword,
+      role: "STAFF",
+      status: "ACTIVE",
+    },
+  });
+
 
   for (const v of vehicles) {
     await prisma.vehicle.upsert({
