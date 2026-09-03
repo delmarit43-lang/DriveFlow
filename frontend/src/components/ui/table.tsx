@@ -23,11 +23,15 @@ export function TR({ className, ...props }: React.HTMLAttributes<HTMLTableRowEle
 export function TH({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
   return (
     <th
-      className={cn("h-11 px-4 text-left text-xs font-semibold uppercase tracking-wide text-muted-foreground", className)}
+      className={cn(
+        "h-11 px-4 text-left text-[11px] font-bold uppercase tracking-wider text-muted-foreground whitespace-nowrap align-middle select-none border-b border-border/80",
+        className,
+      )}
       {...props}
     />
   );
 }
+
 
 export function TD({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {
   return <td className={cn("px-4 py-4 align-middle", className)} {...props} />;
