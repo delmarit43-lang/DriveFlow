@@ -36,12 +36,14 @@ export default function LoginPage() {
   // 2-Step Verification State
   const [step, setStep] = useState<"credentials" | "2fa">("credentials");
   const [require2FA, setRequire2FA] = useState(true);
-  const [otp, setOtp] = useState<string[]>(["1", "2", "3", "4", "5", "6"]);
+  const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
 
   const [activeRole, setActiveRole] = useState<RoleOption>("admin");
   const [email, setEmail] = useState("admin@driveflow.com");
   const [password, setPassword] = useState("Admin@123");
+
 
   function handleSelectRole(role: RoleOption) {
     setActiveRole(role);
@@ -359,7 +361,13 @@ export default function LoginPage() {
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs text-slate-400">
                   <span>Enter 6-digit PIN</span>
-                  <span className="font-mono text-indigo-400 font-medium text-[11px]">Demo: 123456</span>
+                  <button
+                    type="button"
+                    onClick={() => setOtp(["1", "2", "3", "4", "5", "6"])}
+                    className="font-mono text-indigo-400 hover:text-indigo-300 font-semibold text-[11px] underline underline-offset-2 transition-colors"
+                  >
+                    Auto-Fill Demo: 123456
+                  </button>
                 </div>
                 <div className="flex justify-between gap-2">
                   {otp.map((digit, index) => (
@@ -379,6 +387,7 @@ export default function LoginPage() {
                     />
                   ))}
                 </div>
+
               </div>
 
               <div className="space-y-2">
